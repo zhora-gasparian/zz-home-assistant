@@ -1,0 +1,20 @@
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - /Users/zz_mm/Desktop/home-assistant/config:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+    #privileged: true
+    #network_mode: host
+    networks:
+      - traefik
+    labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.homeassistant.rule=Host(`homeassistant.zzbyte.dev`)"
+        - "traefik.http.services.homeassistant.loadbalancer.server.port=8123"
+networks:
+  traefik:
+    external: true
