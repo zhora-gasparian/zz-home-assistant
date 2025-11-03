@@ -16,17 +16,17 @@ services:
         - "traefik.enable=true"
         - "traefik.http.routers.homeassistant.rule=Host(`homeassistant.zzbyte.dev`)"
         - "traefik.http.services.homeassistant.loadbalancer.server.port=8123"
-    matter-server:
-      container_name: matter-server
-      image: ghcr.io/home-assistant/matter-server:stable
-      restart: unless-stopped
-      #network_mode: host # Or a specific network if needed
-      volumes:
-        - /Users/zz_mm/Desktop/home-assistant/matter_data:/data # Map a host directory for persistent data
-      environment:
-        - TZ=Asia/Yerevan
-      networks:
-        - homeassistant
+  matter-server:
+    container_name: matter-server
+    image: ghcr.io/home-assistant/matter-server:stable
+    restart: unless-stopped
+    #network_mode: host # Or a specific network if needed
+    volumes:
+      - /Users/zz_mm/Desktop/home-assistant/matter_data:/data # Map a host directory for persistent data
+    environment:
+      - TZ=Asia/Yerevan
+    networks:
+      - homeassistant
 networks:
   homeassistant:
   traefik:
