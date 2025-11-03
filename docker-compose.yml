@@ -22,16 +22,16 @@ services:
     restart: unless-stopped
     security_opt:  
       - apparmor=unconfined
-    ports:
-      - 5580:5580
-    network_mode: host # Or a specific network if needed
+    #ports:
+     # - 5580:5580
+    #network_mode: host # Or a specific network if needed
     volumes:
       - /Users/zz_mm/Desktop/home-assistant/matter_data:/data # Map a host directory for persistent data
       - /run/dbus:/run/dbus:ro
     environment:
       - TZ=Asia/Yerevan
-    #networks:
-      #- homeassistant
+    networks:
+      - homeassistant
 networks:
   homeassistant:
   traefik:
