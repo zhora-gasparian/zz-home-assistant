@@ -20,13 +20,13 @@ services:
     container_name: matter-server
     image: ghcr.io/home-assistant-libs/python-matter-server:stable
     restart: unless-stopped
-    #network_mode: host # Or a specific network if needed
+    network_mode: host # Or a specific network if needed
     volumes:
       - /Users/zz_mm/Desktop/home-assistant/matter_data:/data # Map a host directory for persistent data
     environment:
       - TZ=Asia/Yerevan
-    networks:
-      - homeassistant
+    #networks:
+      #- homeassistant
 networks:
   homeassistant:
   traefik:
